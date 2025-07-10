@@ -1,3 +1,4 @@
+
 const express = require("express");
 const cors = require("cors");
 
@@ -7,10 +8,11 @@ const PORT = process.env.PORT || 3001;
 app.use(cors());
 app.use(express.json());
 
-app.post("/createReminder", (req, res) => {
-  const { title, date } = req.body;
-  console.log("✅ Reminder received:", title, date);
-  res.status(200).json({ message: "Reminder created!", title, date });
+app.post('/api/reminders', (req, res) => {
+  const { title, datetime } = req.body;
+
+  console.log('Reminder received:', title, datetime); 
+  res.sendStatus(200);
 });
 
 app.get("/", (req, res) => {
